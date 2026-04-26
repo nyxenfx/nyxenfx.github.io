@@ -476,7 +476,7 @@
       }
     }
 
-    // Scrubbing (click + drag)
+    // scrubbing
     const track = document.getElementById('track');
     let scrubbing = false;
 
@@ -501,7 +501,7 @@
     function skipBack()    { audio.currentTime = Math.max(0, audio.currentTime - 10); }
     function skipForward() { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10); }
 
-    // Autoplay (browsers require a user gesture, so we attempt it silently)
+    
     window.addEventListener('load', () => {
       const tryPlay = audio.play();
       if (tryPlay !== undefined) {
