@@ -28,10 +28,7 @@
       position: relative;
     }
 
-    /* ── GIF BACKGROUND ─────────────────────────────
-       Replace YOUR_GIF_URL_HERE with your gif link
-       e.g. https://i.imgur.com/abcd1234.gif
-    ─────────────────────────────────────────────── */
+
     #bg-gif {
       position: fixed;
       inset: 0;
@@ -69,7 +66,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── AVATAR ── */
+
     .avatar-wrap {
       position: relative;
       width: 94px;
@@ -86,10 +83,7 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── PROFILE PIC ─────────────────────────────────
-       Replace YOUR_PROFILE_PIC_URL_HERE with your image
-       e.g. https://i.imgur.com/yourpic.jpg
-    ─────────────────────────────────────────────── */
+
     .avatar-img {
       position: absolute;
       inset: 3px;
@@ -130,7 +124,7 @@
       margin-top: 0.25rem;
     }
 
-    /* ── LINKS BOX ── */
+
     .links-box {
       width: 100%;
       background: var(--glass);
@@ -191,7 +185,7 @@
     .discord { --lc: #7289da; }
     .payhip  { --lc: #f5a623; }
 
-    /* ── MUSIC PLAYER ── */
+
     .player {
       width: 100%;
       backdrop-filter: blur(20px);
@@ -278,16 +272,12 @@
 <body>
 
   <!-- ═══════════════════════════════════════════════
-    BACKGROUND GIF — paste your gif URL below
-    Free gif hosts: tenor.com, giphy.com, imgur.com
-    Right-click any gif → "Copy image address"
+  Background
   ═══════════════════════════════════════════════ -->
-  <img id="bg-gif" src="https://media1.tenor.com/m/uDniuUWW4rQAAAAC/columbina-genshin-impact.gif" alt="" />
+  <img id="bg-gif" src="https://media1.tenor.com/m/uDniuUWW4rQAAAAC/columbina-genshin-impact.gif" alt="" /> 
 
   <!-- ═══════════════════════════════════════════════
-    MUSIC — paste a direct .mp3 link below
-    Free host: catbox.moe (upload → get direct link)
-    Also update song-title and song-artist text below
+   Music
   ═══════════════════════════════════════════════ -->
   <audio id="audio" preload="metadata">
     <source src="https://files.catbox.moe/kmqnmw.mp3" type="audio/mpeg" />
@@ -298,8 +288,7 @@
     <div class="avatar-wrap">
       <div class="avatar-ring"></div>
       <!-- ═══════════════════════════════════════════
-        PROFILE PICTURE — paste your image URL below
-        Free host: imgur.com → upload → copy direct link
+        Profile Picture
       ═══════════════════════════════════════════ -->
       <img class="avatar-img" id="pfp"
            src="https://i.imgur.com/HNE9uoG.png"
@@ -313,7 +302,7 @@
       <div class="tag">Editor</div>
     </div>
 
-    <!-- ALL LINKS IN ONE BOX -->
+   
     <div class="links-box">
 
       <a class="link-btn tiktok" href="https://www.tiktok.com/@nyxenfx" target="_blank" rel="noopener">
@@ -357,7 +346,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
         </div>
         <div class="player-info">
-          <!-- Change these to your song & artist name -->
+     
           <div class="player-title" id="song-title">Poem</div>
           <div class="player-artist" id="song-artist">OverTonight</div>
         </div>
