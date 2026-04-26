@@ -65,7 +65,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* avatar the last airbender */
+    
     .avatar-wrap {
       position: relative;
       width: 94px;
@@ -106,7 +106,7 @@
       color: var(--accent);
     }
 
-    /* nname */
+   
     .name {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
@@ -124,7 +124,7 @@
       margin-top: 0.25rem;
     }
 
-    /* linkse */
+    
     .links-box {
       width: 100%;
       background: var(--glass);
@@ -189,7 +189,7 @@
     .discord { --lc: #7289da; }
     .payhip  { --lc: #f5a623; }
 
-    /* de rlly good music lolol */
+   
     .player {
       width: 100%;
       background: var(--glass);
@@ -290,7 +290,7 @@
       transition: width 0.1s linear;
     }
 
-    /* Fortnite */
+    
     .player-controls {
       display: flex;
       align-items: center;
@@ -313,6 +313,8 @@
 
     .ctrl-btn {
       width: 30px; height: 30px;
+      border-radius: 50%;
+      border: none;
       background: rgba(255,255,255,0.07);
       color: var(--muted);
       cursor: pointer;
@@ -356,7 +358,6 @@
 
     <div class="links-box">
 
-      <!-- for the icon images loser -->
       <a class="link-btn tiktok" href="https://www.tiktok.com/@nyxenfx" target="_blank" rel="noopener">
         <div class="icon">
           <img src="https://i.imgur.com/eEkk16O.jpeg" alt="tiktok" onerror="this.style.opacity='0'" />
@@ -391,7 +392,7 @@
 
     </div>
 
-    <!-- de music player #2 -->
+   
     <div class="player">
 
       <div class="player-art" id="disc">
@@ -480,7 +481,7 @@
       }
     }
 
-    // TS IS SCRUBBING
+    
     const track = document.getElementById('track');
     let scrubbing = false;
 
@@ -505,7 +506,7 @@
     function skipBack()    { audio.currentTime = Math.max(0, audio.currentTime - 10); }
     function skipForward() { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10); }
 
-    // SO MEAN BROWSER CANT INTERFERE WITH AUTOPLAY
+   
     window.addEventListener('load', () => {
       const tryPlay = audio.play();
       if (tryPlay !== undefined) {
@@ -513,7 +514,7 @@
           iconPlay.style.display = 'none';
           iconPause.style.display = '';
           disc.classList.add('spinning');
-        }).catch(() => {  });
+        }).catch(() => { });
       }
     });
   </script>
