@@ -192,8 +192,9 @@
    
     .player {
       width: 100%;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: transparent;
+      border: none;
+      border-radius: 16px;
       padding: 1rem 1.2rem;
       display: flex;
       align-items: center;
@@ -389,7 +390,7 @@
 
     </div>
 
-   
+    
     <div class="player">
 
       <div class="player-art" id="disc">
@@ -478,7 +479,7 @@
       }
     }
 
-    
+   
     const track = document.getElementById('track');
     let scrubbing = false;
 
@@ -503,7 +504,7 @@
     function skipBack()    { audio.currentTime = Math.max(0, audio.currentTime - 10); }
     function skipForward() { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10); }
 
-   
+    
     window.addEventListener('load', () => {
       const tryPlay = audio.play();
       if (tryPlay !== undefined) {
@@ -511,7 +512,7 @@
           iconPlay.style.display = 'none';
           iconPause.style.display = '';
           disc.classList.add('spinning');
-        }).catch(() => { });
+        }).catch(() => {  });
       }
     });
   </script>
