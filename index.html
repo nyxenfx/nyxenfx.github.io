@@ -28,7 +28,6 @@
       position: relative;
     }
 
-
     #bg-gif {
       position: fixed;
       inset: 0;
@@ -66,7 +65,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-
+    /* AVATAR */
     .avatar-wrap {
       position: relative;
       width: 94px;
@@ -83,7 +82,6 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-
     .avatar-img {
       position: absolute;
       inset: 3px;
@@ -91,6 +89,7 @@
       object-fit: cover;
       width: calc(100% - 6px);
       height: calc(100% - 6px);
+      background: #0e1117;
     }
 
     .avatar-fallback {
@@ -107,6 +106,7 @@
       color: var(--accent);
     }
 
+    /* NAME */
     .name {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
@@ -124,7 +124,7 @@
       margin-top: 0.25rem;
     }
 
-
+    /* LINKS BOX */
     .links-box {
       width: 100%;
       background: var(--glass);
@@ -174,10 +174,7 @@
     }
     .link-btn .icon svg { width: 17px; height: 17px; }
     .link-btn .label { flex: 1; }
-    .link-btn .arrow {
-      color: var(--muted);
-      transition: transform 0.2s, color 0.2s;
-    }
+    .link-btn .arrow { color: var(--muted); transition: transform 0.2s, color 0.2s; }
     .link-btn:hover .arrow { transform: translateX(3px); color: var(--lc, var(--accent)); }
 
     .tiktok  { --lc: #ffffff; }
@@ -185,18 +182,15 @@
     .discord { --lc: #7289da; }
     .payhip  { --lc: #f5a623; }
 
-
+    /* MUSIC PLAYER */
     .player {
       width: 100%;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       padding: 1rem 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .player-top {
       display: flex;
       align-items: center;
       gap: 0.8rem;
@@ -213,7 +207,21 @@
     .player-art.spinning { animation: discSpin 3s linear infinite; }
     @keyframes discSpin { to { transform: rotate(360deg); } }
 
-    .player-info { flex: 1; min-width: 0; }
+    .player-mid {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .player-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-width: 0;
+    }
+
     .player-title {
       font-family: 'Syne', sans-serif;
       font-weight: 700;
@@ -222,7 +230,57 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .player-artist { font-size: 0.7rem; color: var(--muted); margin-top: 0.15rem; }
+
+    .player-sep { color: var(--muted); font-size: 0.8rem; }
+
+    .player-artist {
+      font-size: 0.72rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .player-time {
+      font-size: 0.62rem;
+      color: var(--muted);
+      flex-shrink: 0;
+      min-width: 28px;
+    }
+
+    .player-time.right { text-align: right; }
+
+    .progress-bar-track {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 99px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      width: 0%;
+      pointer-events: none;
+      transition: width 0.1s linear;
+    }
+
+    /* CONTROLS */
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
 
     .play-btn {
       width: 38px; height: 38px;
@@ -232,34 +290,23 @@
       color: #000;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
       transition: transform 0.15s;
     }
     .play-btn:hover { transform: scale(1.08); }
     .play-btn svg { width: 16px; height: 16px; }
 
-    .progress-bar-track {
-      width: 100%;
-      height: 4px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 99px;
-      cursor: pointer;
-      position: relative;
-    }
-    .progress-bar-fill {
-      height: 100%;
-      border-radius: 99px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      width: 0%;
-      pointer-events: none;
-    }
-    .progress-times {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.65rem;
+    .ctrl-btn {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.07);
       color: var(--muted);
-      margin-top: 0.3rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, color 0.2s;
     }
+    .ctrl-btn:hover { background: rgba(255,255,255,0.12); color: var(--text); }
+    .ctrl-btn svg { width: 16px; height: 16px; }
 
     .footer {
       font-size: 0.6rem;
@@ -271,14 +318,8 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════
-  Background
-  ═══════════════════════════════════════════════ -->
-  <img id="bg-gif" src="https://media1.tenor.com/m/uDniuUWW4rQAAAAC/columbina-genshin-impact.gif" alt="" /> 
+  <img id="bg-gif" src="https://media1.tenor.com/m/uDniuUWW4rQAAAAC/columbina-genshin-impact.gif" alt="" />
 
-  <!-- ═══════════════════════════════════════════════
-   Music
-  ═══════════════════════════════════════════════ -->
   <audio id="audio" preload="metadata">
     <source src="https://files.catbox.moe/kmqnmw.mp3" type="audio/mpeg" />
   </audio>
@@ -287,9 +328,6 @@
 
     <div class="avatar-wrap">
       <div class="avatar-ring"></div>
-      <!-- ═══════════════════════════════════════════
-        Profile Picture
-      ═══════════════════════════════════════════ -->
       <img class="avatar-img" id="pfp"
            src="https://i.imgur.com/HNE9uoG.png"
            alt="nyxenfx"
@@ -302,7 +340,6 @@
       <div class="tag">Editor</div>
     </div>
 
-   
     <div class="links-box">
 
       <a class="link-btn tiktok" href="https://www.tiktok.com/@nyxenfx" target="_blank" rel="noopener">
@@ -323,7 +360,7 @@
 
       <a class="link-btn discord" href="https://discord.gg/tErbJB86ye" target="_blank" rel="noopener">
         <div class="icon">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.032.054a19.9 19.9 0 0 0 5.993 3.03.077.077 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.032.054a19.9 19.9 0 0 0 5.993 3.03.077.077 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c33.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
         </div>
         <span class="label">Discord Server</span>
         <span class="arrow">→</span>
@@ -339,17 +376,15 @@
 
     </div>
 
-<div class="player">
- 
-      <!-- album art -->
+    <!-- MUSIC PLAYER -->
+    <div class="player">
+
       <div class="player-art" id="disc">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
       </div>
- 
-      <!-- middle: title + progress -->
+
       <div class="player-mid">
         <div class="player-meta">
-          <!-- Change these to your song & artist name -->
           <div class="player-title" id="song-title">Poem</div>
           <span class="player-sep">·</span>
           <div class="player-artist" id="song-artist">OverTonight</div>
@@ -362,26 +397,25 @@
           <span class="player-time right" id="dur">0:00</span>
         </div>
       </div>
- 
-      <!-- controls -->
+
       <div class="player-controls">
         <button class="ctrl-btn" onclick="skipBack()" title="Back 10s">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 5V1l-5 5 5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6h-2c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8zm-1.1 11h-.85v-3.26l-1.01.31v-.69l1.77-.63h.09V16zm4.28-1.41c0 .45-.05.79-.17 1.03s-.30.42-.55.54c-.25.12-.57.18-.96.18s-.71-.06-.96-.18-.43-.30-.55-.54-.17-.58-.17-1.03v-.76c0-.45.05-.79.17-1.03s.30-.42.55-.54.57-.18.96-.18.71.06.96.18.43.30.55.54.17.58.17 1.03v.76zm-.85-.86c0-.32-.02-.55-.07-.69s-.14-.2-.28-.2-.22.07-.27.2-.07.37-.07.69v1.07c0 .32.02.55.07.69s.14.2.27.2.22-.07.27-.2.07-.37.07-.69v-1.07z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 5V1l-5 5 5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6h-2c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
         </button>
         <button class="play-btn" id="play-btn" onclick="togglePlay()">
           <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           <svg id="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
         </button>
         <button class="ctrl-btn" onclick="skipForward()" title="Forward 10s">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.01 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8zm-1.1 11h-.85v-3.26l-1.01.31v-.69l1.77-.63h.09V16zm4.28-1.41c0 .45-.05.79-.17 1.03s-.3.42-.55.54-.57.18-.96.18-.71-.06-.96-.18-.43-.3-.55-.54-.17-.58-.17-1.03v-.76c0-.45.05-.79.17-1.03s.3-.42.55-.54.57-.18.96-.18.71.06.96.18.43.3.55.54.17.58.17 1.03v.76zm-.85-.86c0-.32-.02-.55-.07-.69s-.14-.2-.28-.2-.22.07-.27.2-.07.37-.07.69v1.07c0 .32.02.55.07.69s.14.2.27.2.22-.07.27-.2.07-.37.07-.69v-1.07z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.01 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/></svg>
         </button>
       </div>
- 
+
     </div>
- 
+
     <div class="footer">nyxenfx · all links</div>
   </div>
- 
+
   <script>
     const audio     = document.getElementById('audio');
     const fill      = document.getElementById('fill');
@@ -390,30 +424,30 @@
     const iconPlay  = document.getElementById('icon-play');
     const iconPause = document.getElementById('icon-pause');
     const disc      = document.getElementById('disc');
- 
+
     function fmt(s) {
       if (isNaN(s)) return '0:00';
       const m = Math.floor(s / 60);
       const sec = Math.floor(s % 60).toString().padStart(2, '0');
       return `${m}:${sec}`;
     }
- 
+
     audio.addEventListener('loadedmetadata', () => {
       durEl.textContent = fmt(audio.duration);
     });
- 
+
     audio.addEventListener('timeupdate', () => {
       if (!audio.duration) return;
       fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
       curEl.textContent = fmt(audio.currentTime);
     });
- 
+
     audio.addEventListener('ended', () => {
       iconPlay.style.display = '';
       iconPause.style.display = 'none';
       disc.classList.remove('spinning');
     });
- 
+
     function togglePlay() {
       if (audio.paused) {
         audio.play();
@@ -427,15 +461,44 @@
         disc.classList.remove('spinning');
       }
     }
- 
-    function seek(e) {
-      const rect = document.getElementById('track').getBoundingClientRect();
-      audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+
+    // Scrubbing (click + drag)
+    const track = document.getElementById('track');
+    let scrubbing = false;
+
+    function getScrubPos(e) {
+      const rect = track.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      return Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
     }
- 
+
+    function applyScrub(e) {
+      if (!audio.duration) return;
+      audio.currentTime = getScrubPos(e) * audio.duration;
+    }
+
+    track.addEventListener('mousedown',  e => { scrubbing = true; applyScrub(e); });
+    track.addEventListener('touchstart', e => { scrubbing = true; applyScrub(e); }, { passive: true });
+    window.addEventListener('mousemove',  e => { if (scrubbing) applyScrub(e); });
+    window.addEventListener('touchmove',  e => { if (scrubbing) applyScrub(e); }, { passive: true });
+    window.addEventListener('mouseup',   () => { scrubbing = false; });
+    window.addEventListener('touchend',  () => { scrubbing = false; });
+
     function skipBack()    { audio.currentTime = Math.max(0, audio.currentTime - 10); }
     function skipForward() { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10); }
+
+    
+    window.addEventListener('load', () => {
+      const tryPlay = audio.play();
+      if (tryPlay !== undefined) {
+        tryPlay.then(() => {
+          iconPlay.style.display = 'none';
+          iconPause.style.display = '';
+          disc.classList.add('spinning');
+        }).catch(() => { /* blocked by browser — user must click play */ });
+      }
+    });
   </script>
- 
+
 </body>
 </html>
