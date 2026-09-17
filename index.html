@@ -412,13 +412,6 @@
     .stat-label { font-size: 13px; color: var(--muted); }
 
     /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-    }
-
     .about-text p {
       font-size: 16px;
       color: var(--muted);
@@ -426,37 +419,6 @@
       margin-bottom: 20px;
     }
     .about-text p strong { color: var(--text); font-weight: 500; }
-
-    .about-visual {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .skill-row { display: flex; flex-direction: column; gap: 8px; }
-
-    .skill-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .skill-label span:last-child { color: var(--soft); }
-
-    .skill-bar-bg { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-
-    .skill-bar-fill {
-      height: 100%;
-      border-radius: 2px;
-      background: linear-gradient(90deg, var(--violet), var(--purple));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-    }
 
     /* ── CHECK THIS OUT ── */
     .cto-section {
@@ -637,7 +599,6 @@
       transform: translateY(-1px);
     }
 
-    /* (mini cards removed) */
     /* ── CONTACT ── */
     .contact-box {
       background: var(--card);
@@ -760,7 +721,6 @@
       .content-grid { grid-template-columns: 1fr; }
       .content-card.wide { grid-column: span 1; }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .contact-box { padding: 48px 24px; }
       .footer-inner { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
       .section-divider { padding: 0 24px; }
@@ -915,8 +875,6 @@
     <h2 class="section-heading reveal">Check This Out</h2>
 
     <div class="cto-grid">
-
-      <!-- Single spotlight card — swap href, text, and image src when ready -->
       <a class="cto-spotlight reveal" href="https://meguanime.com/" target="_blank" rel="noopener">
         <div class="cto-spotlight-left">
           <span class="cto-spotlight-tag">&#9733; Featured</span>
@@ -932,7 +890,6 @@
           <img src="https://i.imgur.com/SkSkqRZ.png" alt="Preview" />
         </div>
       </a>
-
     </div>
   </div>
 
@@ -940,15 +897,14 @@
 
   <!-- ABOUT -->
   <div class="section-wrap" id="about">
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p class="section-label">MORE ABOUT ME</p>
-        <h2 class="section-heading" style="margin-bottom:24px">About Me</h2>
-        <p>I go by <strong>Nyxen</strong>. I usually make Wuthering Waves, Genshin, and HSR edits or Anime edits but i sometimes do movie edits or artist edits.</p>
-        <p>Editor just for fun.</p>
-        <p>I am 15 years old and male.</p>
-      </div>
-
+    <div class="about-text reveal">
+      <p class="section-label">MORE ABOUT ME</p>
+      <h2 class="section-heading" style="margin-bottom:24px">About Me</h2>
+      <p>I go by <strong>Nyxen</strong>. I usually make Wuthering Waves, Genshin, and HSR edits or Anime edits but i sometimes do movie edits or artist edits.</p>
+      <p>Editor just for fun.</p>
+      <p>I am 15 years old and male.</p>
+    </div>
+  </div>
 
   <div class="section-divider"></div>
 
@@ -1023,7 +979,6 @@
 
     // ── Scroll reveal ──
     const revealEls = document.querySelectorAll('.reveal');
-    const skillBars = document.querySelectorAll('.skill-bar-fill');
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => {
@@ -1032,18 +987,6 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     revealEls.forEach(el => observer.observe(el));
-
-    // ── Skill bars ──
-    const barObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.transform = `scaleX(${e.target.dataset.width})`;
-          barObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    skillBars.forEach(bar => barObserver.observe(bar));
   </script>
 </body>
 </html>
